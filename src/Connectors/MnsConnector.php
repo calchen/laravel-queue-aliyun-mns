@@ -18,7 +18,7 @@ class MnsConnector implements ConnectorInterface
      */
     public function connect(array $config)
     {
-        $client = new Client($config['endpoint'], $config['access_id'], $config['access_key_secret']);
+        $client = new Client($config['endpoint'], $config['access_key_id'], $config['access_key_secret']);
 
         return new MnsQueue($client, $config['queue']);
     }
