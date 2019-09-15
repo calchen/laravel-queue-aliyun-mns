@@ -30,7 +30,6 @@ class MnsQueue extends Queue implements QueueContract
         $this->queueName = $queue;
     }
 
-
     /**
      * Get the size of the queue.
      *
@@ -42,6 +41,7 @@ class MnsQueue extends Queue implements QueueContract
     {
         /** @var QueueAttributes $attributes */
         $attributes = $this->getQueue($queue)->getAttribute()->getQueueAttributes();
+
         return $attributes->getActiveMessages();
     }
 
@@ -110,7 +110,7 @@ class MnsQueue extends Queue implements QueueContract
     }
 
     /**
-     * Returns a queue reference for operating on the queue
+     * Returns a queue reference for operating on the queue.
      *
      * @param null $queueName
      *
