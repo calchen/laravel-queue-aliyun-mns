@@ -2,8 +2,8 @@
 
 namespace Calchen\LaravelQueueAliyunMns;
 
-use Calchen\LaravelQueueAliyunMns\Connectors\MnsConnector;
 use Illuminate\Support\ServiceProvider;
+use Calchen\LaravelQueueAliyunMns\Connectors\MnsConnector;
 
 class AliyunMnsServiceProvider extends ServiceProvider
 {
@@ -26,7 +26,6 @@ class AliyunMnsServiceProvider extends ServiceProvider
     {
         $this->registerMnsConnector($this->app['queue']);
     }
-
 
     /**
      * Register the Redis queue connector.

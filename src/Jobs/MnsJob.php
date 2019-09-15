@@ -3,10 +3,10 @@
 namespace Calchen\LaravelQueueAliyunMns\Jobs;
 
 use AliyunMNS\Queue;
-use AliyunMNS\Responses\ReceiveMessageResponse;
-use Illuminate\Container\Container;
-use Illuminate\Contracts\Queue\Job as JobContract;
 use Illuminate\Queue\Jobs\Job;
+use Illuminate\Container\Container;
+use AliyunMNS\Responses\ReceiveMessageResponse;
+use Illuminate\Contracts\Queue\Job as JobContract;
 
 class MnsJob extends Job implements JobContract
 {
@@ -16,12 +16,11 @@ class MnsJob extends Job implements JobContract
     protected $mns;
 
     /**
-     * 阿里云 MNS 接受到的消息
+     * 阿里云 MNS 接受到的消息.
      *
      * @var ReceiveMessageResponse
      */
     protected $job;
-
 
     public function __construct(Container $container, Queue $mns, ReceiveMessageResponse $message, $connectionName)
     {
