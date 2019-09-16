@@ -27,11 +27,10 @@ class AliyunMnsServiceProvider extends ServiceProvider
         $this->registerMnsConnector($this->app['queue']);
     }
 
-
     /**
      * Register the Redis queue connector.
      *
-     * @param  \Illuminate\Queue\QueueManager  $manager
+     * @param  \Illuminate\Queue\QueueManager $manager
      * @return void
      */
     protected function registerMnsConnector($manager)

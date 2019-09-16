@@ -16,12 +16,11 @@ class MnsJob extends Job implements JobContract
     protected $mns;
 
     /**
-     * 阿里云 MNS 接受到的消息
+     * 阿里云 MNS 接受到的消息.
      *
      * @var ReceiveMessageResponse
      */
     protected $job;
-
 
     public function __construct(Container $container, Queue $mns, ReceiveMessageResponse $message, $connectionName)
     {
@@ -35,7 +34,7 @@ class MnsJob extends Job implements JobContract
     /**
      * Release the job back into the queue.
      *
-     * @param  int   $delay
+     * @param  int  $delay
      * @return void
      */
     public function release($delay = 0)

@@ -30,7 +30,6 @@ class MnsQueue extends Queue implements QueueContract
         $this->queueName = $queue;
     }
 
-
     /**
      * Get the size of the queue.
      *
@@ -42,6 +41,7 @@ class MnsQueue extends Queue implements QueueContract
     {
         /** @var QueueAttributes $attributes */
         $attributes = $this->getQueue($queue)->getAttribute()->getQueueAttributes();
+
         return $attributes->getActiveMessages();
     }
 
@@ -49,8 +49,8 @@ class MnsQueue extends Queue implements QueueContract
      * Push a new job onto the queue.
      *
      * @param string|object $job
-     * @param mixed $data
-     * @param string|null $queue
+     * @param mixed         $data
+     * @param string|null   $queue
      *
      * @return mixed
      */
@@ -62,9 +62,9 @@ class MnsQueue extends Queue implements QueueContract
     /**
      * Push a raw payload onto the queue.
      *
-     * @param string $payload
+     * @param string      $payload
      * @param string|null $queue
-     * @param array $options
+     * @param array       $options
      *
      * @return mixed
      */
@@ -79,9 +79,9 @@ class MnsQueue extends Queue implements QueueContract
      * Push a new job onto the queue after a delay.
      *
      * @param \DateTimeInterface|\DateInterval|int $delay
-     * @param string|object $job
-     * @param mixed $data
-     * @param string|null $queue
+     * @param string|object                        $job
+     * @param mixed                                $data
+     * @param string|null                          $queue
      *
      * @return mixed
      */
@@ -110,7 +110,7 @@ class MnsQueue extends Queue implements QueueContract
     }
 
     /**
-     * Returns a queue reference for operating on the queue
+     * Returns a queue reference for operating on the queue.
      *
      * @param null $queueName
      *
