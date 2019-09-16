@@ -3,6 +3,9 @@
 <p align="center"> 阿里云消息服务（MNS） Laravel/Lumen 扩展包 </p>
 
 <p align="center">
+    <a href="https://github.styleci.io/repos/205573394">
+        <img alt="Style CI" src="https://github.styleci.io/repos/205573394/shield?style=flat">
+    </a>
     <a href="https://packagist.org/packages/calchen/laravel-queue-aliyun-mns">
         <img alt="Latest Stable Version" src="https://img.shields.io/packagist/v/calchen/laravel-queue-aliyun-mns.svg">
     </a>
