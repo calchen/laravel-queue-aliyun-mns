@@ -78,13 +78,45 @@ $app->register(Calchen\LaravelQueueAliyunMns\AliyunMnsServiceProvider::class);
 
 #### 地域节点（endpoint）
 
-在[阿里云 MNS 控制台](https://mns.console.aliyun.com) 选择正确的区域后，点击“获取 Endpoint”按钮查看对应的地域节点。
+在[阿里云 MNS 控制台](https://mns.console.aliyun.com)选择正确的区域后，点击“获取 Endpoint”按钮查看对应的地域节点。
 
 需要注意的是您看到的地域节点可能是这样的 `http(s)://1687399289328741.mns.cn-hangzhou.aliyuncs.com/`，但实际上只能使用 `https://1687399289328741.mns.cn-hangzhou.aliyuncs.com/` 或 `http://1687399289328741.mns.cn-hangzhou.aliyuncs.com/`
 
 #### 安全提醒
 
 为了安全，请使用子账户的 AccessKey ID 和 AccessKey Key Secret，请务必不要使用主账户的 AccessKey ID 和 AccessKey Key Secret
+
+### RAM 访问控制权限策略参考
+
+本项目使用了阿里云 MNS 的这些方法：GetQueueAttributes、SendMessage、ReceiveMessage、DeleteMessage、ChangeMessageVisibility。
+
+根据[阿里云 MNS 文档](https://help.aliyun.com/document_detail/27448.html?spm=a2c4g.11186623.6.597.27f31b2dQ1x64i)并践行最佳安全实践，为 RAM 用户授予最小权限。这里以杭州区（cn-hangzhou）名称为 laravel-queue-aliyun-mns 的队列为例：
+```json
+{
+    "Version": "1",
+    "Statement": [
+        {
+            "Action": "mns:GetQueueAttributes",
+            "Resource": [
+                "acs:mns:cn-hangzhou:*:/queues/laravel-queue-aliyun-mns"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "mns:SendMessage",
+                "mns:ReceiveMessage",
+                "mns:DeleteMessage",
+                "mns:ChangeMessageVisibility"
+            ],
+            "Resource": [
+                "acs:mns:cn-hangzhou:*:/queues/laravel-queue-aliyun-mns/messages"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+}
+```
 
 ## 开源协议
 

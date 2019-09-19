@@ -75,6 +75,42 @@ Open [Aliyun MNS console](https://mns.console.aliyun.com). Select the region whe
 
 It's important to note that you can see endpoint may be such `http(s)://1687399289328741.mns.cn-hangzhou.aliyuncs.com/`, but in fact can only use `https://1687399289328741.mns.cn-hangzhou.aliyuncs.com/` or `http://1687399289328741.mns.cn-hangzhou.aliyuncs.com/`
 
+#### Security
+
+For security you should use AccessKey ID and AccessKey Key Secret of RAM users, and should never use AccessKey ID and AccessKey Key Secret of cloud account 
+
+### Reference for RAM policy 
+
+These MNS API is used by current project: GetQueueAttributes、SendMessage、ReceiveMessage、DeleteMessage、ChangeMessageVisibility。
+
+According to [MNS document](https://www.alibabacloud.com/help/doc-detail/47577.html?spm=a2c5t.11065259.1996646101.searchclickresult.300e5a3egCxUQ5#h2-apis-to-policy-action-mapping4) and implement best security practices, grant minimum permissions to users as needed. Here is a example policy for a queue, named for laravel-queue-aliyun-mns, which created in HangZhou China (cn-hangzhou):
+```json
+{
+    "Version": "1",
+    "Statement": [
+        {
+            "Action": "mns:GetQueueAttributes",
+            "Resource": [
+                "acs:mns:cn-hangzhou:*:/queues/laravel-queue-aliyun-mns"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "mns:SendMessage",
+                "mns:ReceiveMessage",
+                "mns:DeleteMessage",
+                "mns:ChangeMessageVisibility"
+            ],
+            "Resource": [
+                "acs:mns:cn-hangzhou:*:/queues/laravel-queue-aliyun-mns/messages"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+}
+```
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
