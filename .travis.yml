@@ -42,7 +42,10 @@ install: travis_retry composer install --no-interaction --prefer-dist
 
 #before_script: phpenv config-add ~/xdebug.ini
 
-script: vendor/bin/phpunit -v
+script:
+  - cat ./phpunit.xml
+  - composer show
+  - vendor/bin/phpunit -v
 
 after_success: sh -c "if [ ! -z ${COVERAGE+x} ]; then travis_retry php vendor/bin/php-coveralls; fi"
 
