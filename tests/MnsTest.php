@@ -10,9 +10,9 @@ class MnsTest extends TestCase
 {
     public function test()
     {
-        Queue::push(new DemoJob());
-        dump(Queue::size());
-        $this->assertTrue(Queue::size() > 0);
+        $r = Queue::push(new DemoJob());
+        dump($r, Queue::size());
+        $this->assertGreaterThan(0, Queue::size());
 
         /** @var MnsJob $job */
         $job = Queue::pop();
@@ -26,7 +26,7 @@ class MnsTest extends TestCase
     public function testDelay()
     {
         Queue::later(Carbon::now()->addSeconds(5), new DemoJob());
-        $this->assertTrue(Queue::size() == 0);
+        $this->assertEquals(0, Queue::size());
 
         sleep(8);
 
