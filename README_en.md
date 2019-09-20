@@ -3,6 +3,12 @@
 <p align="center"> Aliyun MNS for Laravel/Lumen </p>
 
 <p align="center">
+    <a href="https://github.styleci.io/repos/205573394">
+        <img alt="Style CI" src="https://github.styleci.io/repos/205573394/shield?style=flat">
+    </a>
+    <a href="https://travis-ci.com/calchen/laravel-queue-aliyun-mns">
+        <img alt="Travis CI" src="https://img.shields.io/travis/com/calchen/laravel-queue-aliyun-mns.svg">
+    </a>
     <a href="https://packagist.org/packages/calchen/laravel-queue-aliyun-mns">
         <img alt="Latest Stable Version" src="https://img.shields.io/packagist/v/calchen/laravel-queue-aliyun-mns.svg">
     </a>
