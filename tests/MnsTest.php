@@ -11,6 +11,7 @@ class MnsTest extends TestCase
     public function test()
     {
         Queue::push(new DemoJob());
+        dump(Queue::size());
         $this->assertTrue(Queue::size() > 0);
 
         /** @var MnsJob $job */
