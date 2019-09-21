@@ -33,7 +33,6 @@ before_install:
 #  - composer require "illuminate/support:${ILLUMINATE_VERSION}" --no-update --prefer-dist
   - composer require "orchestra/testbench:${ILLUMINATE_VERSION/5\./3\.}" --no-update --prefer-dist
   - composer require "phpunit/phpunit:${PHPUNIT_VERSION}" --no-update --prefer-dist
-  - composer require "php-coveralls/php-coveralls:^2.1" --no-update --prefer-dist
 
 install: travis_retry composer install --no-interaction --prefer-dist
 
@@ -43,7 +42,7 @@ script:
   - composer show
   - vendor/bin/phpunit -v
 
-after_success: sh -c "if [ ! -z ${COVERAGE+x} ]; then travis_retry php vendor/bin/php-coveralls; fi"
+after_success: sh -c "if [ ! -z ${COVERAGE+x} ]; then php vendor/bin/php-coveralls; fi"
 
 notifications:
   email: false
