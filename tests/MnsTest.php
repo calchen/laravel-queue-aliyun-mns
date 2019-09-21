@@ -17,6 +17,7 @@ class MnsTest extends TestCase
         $job = Queue::pop();
         $this->assertTrue($job instanceof MnsJob);
         $this->assertEquals(1, $job->attempts());
+        $this->assertIsString($job->getJobId());
 
         $job->delete();
         $this->assertTrue($job->isDeleted());
