@@ -9,6 +9,9 @@
     <a href="https://travis-ci.com/calchen/laravel-queue-aliyun-mns">
         <img alt="Travis CI" src="https://img.shields.io/travis/com/calchen/laravel-queue-aliyun-mns.svg">
     </a>
+    <a href='https://coveralls.io/github/calchen/laravel-queue-aliyun-mns?branch=master'>
+        <img alt='Coverage Status' src='https://coveralls.io/repos/github/calchen/laravel-queue-aliyun-mns/.svg?branch=master'/>
+    </a>
     <a href="https://packagist.org/packages/calchen/laravel-queue-aliyun-mns">
         <img alt="Latest Stable Version" src="https://img.shields.io/packagist/v/calchen/laravel-queue-aliyun-mns.svg">
     </a>
