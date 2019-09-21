@@ -25,8 +25,6 @@ class MnsTest extends TestCase
     public function testDelay()
     {
         Queue::later(Carbon::now()->addSeconds(5), new DemoJob());
-        $this->assertEquals(0, Queue::size());
-
         sleep(8);
 
         /** @var MnsJob $job */
