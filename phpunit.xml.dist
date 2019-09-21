@@ -25,4 +25,8 @@
         <server name="ALIYUN_MNS_ENDPOINT" value=""/>
         <server name="ALIYUN_MNS_QUEUE" value=""/>
     </php>
+
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
 </phpunit>
