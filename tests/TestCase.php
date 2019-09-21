@@ -14,6 +14,7 @@ class TestCase extends TestbenchTestCase
 
     protected function getEnvironmentSetUp($app)
     {
+        $app['config']->set('queue.default', 'mns');
         $app['config']->set('queue.connections.mns', [
             'driver' => 'mns',
             'access_key_id' => env('ALIYUN_ACCESS_KEY_ID'),

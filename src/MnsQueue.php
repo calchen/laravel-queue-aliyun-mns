@@ -7,7 +7,9 @@ use AliyunMNS\Model\QueueAttributes;
 use AliyunMNS\Requests\SendMessageRequest;
 use Calchen\LaravelQueueAliyunMns\Jobs\MnsJob;
 use Illuminate\Contracts\Queue\Queue as QueueContract;
+use Illuminate\Foundation\Application;
 use Illuminate\Queue\Queue;
+use Illuminate\Support\Str;
 
 class MnsQueue extends Queue implements QueueContract
 {
@@ -56,7 +58,8 @@ class MnsQueue extends Queue implements QueueContract
      */
     public function push($job, $data = '', $queue = null)
     {
-        return $this->pushRaw($this->createPayload($job, $this->getQueue($queue), $data), $queue);
+        // return $this->pushRaw($this->createPayload($job, $this->getQueue($queue), $data), $queue);
+        return $this->pushRaw($this->getPayload($job, $data, $queue), $queue);
     }
 
     /**
@@ -87,10 +90,8 @@ class MnsQueue extends Queue implements QueueContract
      */
     public function later($delay, $job, $data = '', $queue = null)
     {
-        $payload = $this->createPayload($job, $this->getQueue($queue), $data);
-
         return $this->getQueue($queue)
-            ->sendMessage(new SendMessageRequest($payload, $this->secondsUntil($delay)))
+            ->sendMessage(new SendMessageRequest($this->getPayload($job, $data, $queue), $this->secondsUntil($delay)))
             ->getMessageId();
     }
 
@@ -119,5 +120,24 @@ class MnsQueue extends Queue implements QueueContract
     private function getQueue($queueName = null)
     {
         return $this->client->getQueueRef($queueName ?: $this->queueName);
+    }
+
+    /**
+     * 5.5-5.6 与 5.7+ 的 createPayload 入参方法有所不同，这里兼容处理一下
+     *
+     * @param        $job
+     * @param string $data
+     * @param null   $queue
+     *
+     * @return string
+     */
+    private function getPayload($job, $data = '', $queue = null)
+    {
+        $version = Application::VERSION;
+        if (Str::startsWith('5.5', $version) || Str::startsWith('5.6', $version)) {
+            return $this->createPayload($job, $data);
+        }
+
+        return $this->createPayload($job, $this->getQueue($queue), $data);
     }
 }

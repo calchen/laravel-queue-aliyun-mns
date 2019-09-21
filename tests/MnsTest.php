@@ -10,14 +10,13 @@ class MnsTest extends TestCase
 {
     public function test()
     {
-        $r = Queue::push(new DemoJob());
-        dump($r, Queue::size());
+        Queue::push(new DemoJob());
         $this->assertGreaterThan(0, Queue::size());
 
         /** @var MnsJob $job */
         $job = Queue::pop();
         $this->assertTrue($job instanceof MnsJob);
-        $this->assertTrue($job->attempts() == 1);
+        $this->assertEquals(1, $job->attempts());
 
         $job->delete();
         $this->assertTrue($job->isDeleted());
@@ -33,7 +32,7 @@ class MnsTest extends TestCase
         /** @var MnsJob $job */
         $job = Queue::pop();
         $this->assertTrue($job instanceof MnsJob);
-        $this->assertTrue($job->attempts() == 1);
+        $this->assertEquals(1, $job->attempts());
 
         $job->delete();
         $this->assertTrue($job->isDeleted());

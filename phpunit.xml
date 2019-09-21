@@ -10,8 +10,7 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Application Test Suite">
-<!--            <directory suffix="Test.php">./tests/</directory>-->
-            <file>./tests/MnsTest.php</file>
+            <directory suffix="Test.php">./tests/</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -21,7 +20,6 @@
     </filter>
 
     <php>
-        <server name="QUEUE_CONNECTION" value="mns"/>
         <server name="ALIYUN_ACCESS_KEY_ID" value=""/>
         <server name="ALIYUN_ACCESS_KEY_SECRET" value=""/>
         <server name="ALIYUN_MNS_ENDPOINT" value=""/>
