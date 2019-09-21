@@ -14,6 +14,7 @@
         "illuminate/queue": "^5.5"
     },
     "require-dev": {
+        "php-coveralls/php-coveralls": "^2.1",
         "orchestra/testbench": "^3.5"
     },
     "autoload": {
