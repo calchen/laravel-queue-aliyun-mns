@@ -123,7 +123,7 @@ class MnsQueue extends Queue implements QueueContract
     }
 
     /**
-     * 5.5-5.6 与 5.7+ 的 createPayload 入参方法有所不同，这里兼容处理一下
+     * 5.5-5.6 与 5.7+ 的 createPayload 入参方法有所不同，这里兼容处理一下.
      *
      * @param        $job
      * @param string $data
