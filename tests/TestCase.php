@@ -3,6 +3,8 @@
 namespace Calchen\LaravelQueueAliyunMns\Test;
 
 use Calchen\LaravelQueueAliyunMns\AliyunMnsServiceProvider;
+use Calchen\LaravelQueueAliyunMns\Jobs\MnsJob;
+use Illuminate\Support\Facades\Queue;
 use Orchestra\Testbench\TestCase as TestbenchTestCase;
 
 class TestCase extends TestbenchTestCase
@@ -22,5 +24,26 @@ class TestCase extends TestbenchTestCase
             'endpoint' => env('ALIYUN_MNS_ENDPOINT'),
             'queue' => env('ALIYUN_MNS_QUEUE'),
         ]);
+    }
+
+    protected function getJob(): MnsJob
+    {
+        /** @var MnsJob $job */
+        $job = Queue::pop();
+
+        $times = 1;
+
+        while (is_null($job)) {
+            throw_if(
+                $times >= 10,
+                new \Exception('尝试获取 Job 次数过多')
+            );
+
+            sleep(2);
+            $job = Queue::pop();
+            $times++;
+        }
+
+        return $job;
     }
 }

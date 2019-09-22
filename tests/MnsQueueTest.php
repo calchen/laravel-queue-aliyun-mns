@@ -34,7 +34,7 @@ class MnsQueueTest extends TestCase
         Queue::later(Carbon::now()->addSeconds(5), new DemoJob());
         sleep(8);
         /** @var MnsJob $job */
-        $job = Queue::pop();
+        $job = $this->getJob();
         $this->assertTrue($job instanceof MnsJob);
         $job->delete();
     }
@@ -46,7 +46,7 @@ class MnsQueueTest extends TestCase
     {
         Queue::push(new DemoJob());
         /** @var MnsJob $job */
-        $job = Queue::pop();
+        $job = $this->getJob();
         $this->assertTrue($job instanceof MnsJob);
         $job->delete();
     }
