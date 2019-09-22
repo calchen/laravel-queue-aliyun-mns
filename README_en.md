@@ -43,16 +43,8 @@ $ composer require calchen/laravel-queue-aliyun-mns:^2.0
 
 ### Laravel
 
-For Laravel >=5.5, no need to manually add `AliyunMnsServiceProvider` into config. It uses package auto discovery feature. Skip this if you are on >=5.5, if not: 
+For Laravel 5.5+ package auto discovery feature will help you loading everything you need
 
-Open your `AppServiceProvider` (located in `app/Providers`) and add this line in `register` function
-```php
-$this->app->register(\Calchen\LaravelQueueAliyunMns\AliyunMnsServiceProvider::class);
-```
-or open your `config/app.php` and add this line in `providers` section
-```php
-Calchen\LaravelQueueAliyunMns\AliyunMnsServiceProvider::class,
-```
 ### Lumen
 
 Open your `bootstrap/app.php` and add this line

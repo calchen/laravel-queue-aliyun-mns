@@ -43,17 +43,7 @@ $ composer require calchen/laravel-queue-aliyun-mns:^2.0
 
 ### Laravel
 
-如果您的 Laravel 版本为 5.5 及以上，您不需要手动的配置文件中添加 `AliyunMnsServiceProvider` Laravel 自带的扩展包发现机制会处理好一切。如是小于 5.5 版本那么需要您进行如下操作: 
-
-打开位于 `app/Providers` 的 `AppServiceProvider.php` 文件并在 `register` 函数中添加如下内容：
-```php
-$this->app->register(\Calchen\LaravelQueueAliyunMns\AliyunMnsServiceProvider::class);
-```
-您也可以在配置文件 `config/app.php` 中的 `providers` 中添加如下内容：
-```php
-Calchen\LaravelQueueAliyunMns\AliyunMnsServiceProvider::class,
-```
-只需选择以上操作中的一种，即可加载本扩招包。
+Laravel 5.5+ 已经实现了扩展包发现机制，您不需要进行额外的加载操作
 
 ### Lumen
 
