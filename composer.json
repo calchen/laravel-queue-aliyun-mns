@@ -15,7 +15,8 @@
     },
     "require-dev": {
         "php-coveralls/php-coveralls": "^2.1",
-        "orchestra/testbench": "^3.7|^4.0"
+        "orchestra/testbench": "^3.7|^4.0",
+        "friendsofphp/php-cs-fixer": "^2.15"
     },
     "autoload": {
         "psr-4": {
