@@ -37,7 +37,7 @@ class MnsJob extends Job implements JobContract
      * @param  int  $delay
      * @return void
      */
-    public function release($delay = 0)
+    public function release($delay = 1)
     {
         parent::release($delay);
 

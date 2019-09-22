@@ -20,10 +20,10 @@
     </filter>
 
     <php>
-        <server name="ALIYUN_ACCESS_KEY_ID" value=""/>
-        <server name="ALIYUN_ACCESS_KEY_SECRET" value=""/>
-        <server name="ALIYUN_MNS_ENDPOINT" value=""/>
-        <server name="ALIYUN_MNS_QUEUE" value=""/>
+        <env name="ALIYUN_ACCESS_KEY_ID" value=""/>
+        <env name="ALIYUN_ACCESS_KEY_SECRET" value=""/>
+        <env name="ALIYUN_MNS_ENDPOINT" value=""/>
+        <env name="ALIYUN_MNS_QUEUE" value=""/>
     </php>
 
     <logging>
