@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Calchen\\LaravelQueueAliyunMns\\": "src/"
+            "Calchen\\LaravelQueueAliyunMns\\": "src"
         }
     },
     "autoload-dev": {
