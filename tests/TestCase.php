@@ -35,11 +35,11 @@ class TestCase extends TestbenchTestCase
 
         while (is_null($job)) {
             throw_if(
-                $times >= 10,
+                $times >= 15,
                 new \Exception('尝试获取 Job 次数过多')
             );
 
-            sleep(2);
+            sleep(5);
             $job = Queue::pop();
             $times++;
         }
