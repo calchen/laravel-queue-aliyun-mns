@@ -32,7 +32,7 @@ class TestCase extends TestbenchTestCase
         $job = Queue::pop();
 
         $times = 1;
-
+        dump(is_null($job));
         while (is_null($job)) {
             throw_if(
                 $times >= 15,
