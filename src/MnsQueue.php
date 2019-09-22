@@ -104,7 +104,7 @@ class MnsQueue extends Queue implements QueueContract
     public function pop($queue = null)
     {
         $queue = $this->getQueue($queue);
-        $message = $queue->receiveMessage();
+        $message = $queue->receiveMessage(30);
 
         return new MnsJob($this->container, $queue, $message, $this->connectionName);
     }
