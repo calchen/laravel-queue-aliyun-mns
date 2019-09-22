@@ -21,8 +21,8 @@ class MnsQueueTest extends TestCase
      */
     public function testPush()
     {
-        Queue::push(new DemoJob());
-        $this->assertGreaterThanOrEqual(1, Queue::size());
+        $messageId = Queue::push(new DemoJob());
+        $this->assertStringMatchesFormat('%s', $messageId);
         Queue::pop()->delete();
     }
 
