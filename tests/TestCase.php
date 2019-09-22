@@ -21,7 +21,7 @@ class TestCase extends TestbenchTestCase
             'access_key_secret' => env('ALIYUN_ACCESS_KEY_SECRET'),
             'endpoint' => env('ALIYUN_MNS_ENDPOINT'),
             'queue' => env('ALIYUN_MNS_QUEUE'),
-            'wait_seconds' => env('ALIYUN_MNS_WAIT_SECONDS', 30)
+            'wait_seconds' => env('ALIYUN_MNS_WAIT_SECONDS', 30),
         ]);
     }
 }
