@@ -81,6 +81,7 @@ $app->register(Calchen\LaravelQueueAliyunMns\AliyunMnsServiceProvider::class);
 | access_key_secret 	| 是   	| 用于身份验证的  AccessKey Key Secret 	| 见下文“安全提醒”      	    |
 | endpoint          	| 是   	| 地域节点                             	| 见下文“地域节点”      	    |
 | queue          	    | 是   	| 队列名称                             	| -                   	    |
+| wait_seconds          | 否   	| 即长轮询时长                            | [消费消息](https://help.aliyun.com/document_detail/35136.html?spm=a2c4g.11186623.6.675.37e35c40Hzv2FW#h2-request)|
 
 #### 地域节点（endpoint）
 

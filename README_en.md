@@ -77,6 +77,7 @@ If you want to use MNS by default, set `QUEUE_CONNECTION=mns` in `.env`
 | access_key_secret 	| Y        	| See 'Security'               	|
 | endpoint          	| Y        	| See 'Endpoint'               	|
 | queue            	    | Y        	| -                            	|
+| wait_seconds          | N   	    | Polling waiting time, See [ReceiveMessage](https://www.alibabacloud.com/help/doc-detail/35136.html?spm=a2c5t.10695662.1996646101.searchclickresult.25165854MAMsvV#h2-request2)|
 
 #### Endpoint
 

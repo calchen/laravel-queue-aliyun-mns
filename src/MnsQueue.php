@@ -18,18 +18,31 @@ class MnsQueue extends Queue implements QueueContract
      */
     private $client;
 
+    /**
+     * @var string
+     */
     private $queueName;
+
+    /**
+     * 在 receiveMessage 时等待时长
+     * @link https://help.aliyun.com/document_detail/35136.html?spm=a2c4g.11186623.6.675.37e35c40Hzv2FW#h2-request
+     *
+     * @var int?
+     */
+    private $waitSeconds;
 
     /**
      * MnsQueue constructor.
      *
      * @param Client $client
      * @param string $queue
+     * @param int    $waitSeconds
      */
-    public function __construct(Client $client, string $queue)
+    public function __construct(Client $client, string $queue, int $waitSeconds = null)
     {
         $this->client = $client;
         $this->queueName = $queue;
+        $this->waitSeconds = $waitSeconds;
     }
 
     /**
@@ -104,7 +117,7 @@ class MnsQueue extends Queue implements QueueContract
     public function pop($queue = null)
     {
         $queue = $this->getQueue($queue);
-        $message = $queue->receiveMessage(30);
+        $message = $queue->receiveMessage($this->waitSeconds);
 
         return new MnsJob($this->container, $queue, $message, $this->connectionName);
     }

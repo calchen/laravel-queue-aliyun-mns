@@ -14,7 +14,7 @@ class MnsJobTest extends TestCase
     {
         Queue::push(new DemoJob());
         /** @var MnsJob $job */
-        $job = $this->getJob();
+        $job = Queue::pop();
         $job->release();
         $this->assertTrue($job->isReleased());
     }
@@ -26,7 +26,7 @@ class MnsJobTest extends TestCase
     {
         Queue::push(new DemoJob());
         /** @var MnsJob $job */
-        $job = $this->getJob();
+        $job = Queue::pop();
         $job->delete();
         $this->assertTrue($job->isDeleted());
     }
@@ -38,7 +38,7 @@ class MnsJobTest extends TestCase
     {
         Queue::push(new DemoJob());
         /** @var MnsJob $job */
-        $job = $this->getJob();
+        $job = Queue::pop();
         $this->assertStringMatchesFormat('%s', $job->getJobId());
         $job->delete();
     }
@@ -50,7 +50,7 @@ class MnsJobTest extends TestCase
     {
         Queue::push(new DemoJob());
         /** @var MnsJob $job */
-        $job = $this->getJob();
+        $job = Queue::pop();
         $this->assertStringMatchesFormat('%s', $job->getRawBody());
         $job->delete();
     }
@@ -62,7 +62,7 @@ class MnsJobTest extends TestCase
     {
         Queue::push(new DemoJob());
         /** @var MnsJob $job */
-        $job = $this->getJob();
+        $job = Queue::pop();
         $this->assertGreaterThanOrEqual(1, $job->attempts());
         $job->delete();
     }
