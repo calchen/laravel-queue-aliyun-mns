@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
+        "php": "^7.0",
         "aliyun/aliyun-mns-php-sdk": "^1.1",
         "illuminate/queue": "^5.5|^5.6"
     },
