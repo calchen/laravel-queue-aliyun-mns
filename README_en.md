@@ -9,8 +9,8 @@
     <a href="https://travis-ci.com/calchen/laravel-queue-aliyun-mns">
         <img alt="Travis CI" src="https://img.shields.io/travis/com/calchen/laravel-queue-aliyun-mns.svg">
     </a>
-    <a href='https://coveralls.io/github/calchen/laravel-queue-aliyun-mns?branch=master'>
-        <img alt='Coverage Status' src='https://coveralls.io/repos/github/calchen/laravel-queue-aliyun-mns/.svg?branch=master'/>
+    <a href='https://coveralls.io/github/calchen/laravel-queue-aliyun-mns?branch=1.0'>
+        <img alt='Coverage Status' src='https://coveralls.io/repos/github/calchen/laravel-queue-aliyun-mns/badge.svg?branch=1.0'/>
     </a>
     <a href="https://packagist.org/packages/calchen/laravel-queue-aliyun-mns">
         <img alt="Latest Stable Version" src="https://img.shields.io/packagist/v/calchen/laravel-queue-aliyun-mns.svg">
@@ -29,8 +29,16 @@ This is a queue drive for Laravel/Lumen base on [Aliyun MNS SDK](https://github.
 
 ## Installing
 
+For Laravel/Lumen 5.5 ~ 5.6
+
 ```shell
-$ composer require calchen/laravel-queue-aliyun-mns
+$ composer require calchen/laravel-queue-aliyun-mns:^1.0
+```
+
+For Laravel/Lumen 5.7+ [Docs](https://github.com/calchen/laravel-queue-aliyun-mns/blob/master/README_en.md)
+
+```shell
+$ composer require calchen/laravel-queue-aliyun-mns:^2.0
 ```
 
 ### Laravel
