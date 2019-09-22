@@ -145,11 +145,6 @@ class MnsQueue extends Queue implements QueueContract
      */
     private function getPayload($job, $data = '', $queue = null): string
     {
-        $version = Application::VERSION;
-        if (Str::startsWith('5.5', $version) || Str::startsWith('5.6', $version)) {
-            return $this->createPayload($job, $data);
-        }
-
-        return $this->createPayload($job, $this->getQueue($queue), $data);
+        return $this->createPayload($job, $data);
     }
 }
