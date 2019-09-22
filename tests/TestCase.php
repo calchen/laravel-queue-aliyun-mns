@@ -41,6 +41,7 @@ class TestCase extends TestbenchTestCase
 
             sleep(5);
             $job = Queue::pop();
+            dump('sleep');
             $times++;
         }
 
