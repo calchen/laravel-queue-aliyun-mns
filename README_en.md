@@ -29,13 +29,7 @@ This is a queue drive for Laravel/Lumen base on [Aliyun MNS SDK](https://github.
 
 ## Installing
 
-For Laravel/Lumen 5.5 ~ 5.6 [Docs](https://github.com/calchen/laravel-queue-aliyun-mns/blob/1.0/README_en.md)
-
-```shell
-$ composer require calchen/laravel-queue-aliyun-mns:^1.0
-```
-
-For Laravel/Lumen 5.7+
+Composer is recommended for installation:
 
 ```shell
 $ composer require calchen/laravel-queue-aliyun-mns:^2.0

@@ -29,13 +29,7 @@
 
 ## 安装
 
-Laravel/Lumen 5.5 ~ 5.6 [Docs](https://github.com/calchen/laravel-queue-aliyun-mns/blob/1.0/README.md)
-
-```shell
-$ composer require calchen/laravel-queue-aliyun-mns:^1.0
-```
-
-Laravel/Lumen 5.7+
+推荐使用 composer 进行安装：
 
 ```shell
 $ composer require calchen/laravel-queue-aliyun-mns:^2.0
