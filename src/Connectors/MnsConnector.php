@@ -4,6 +4,7 @@ namespace Calchen\LaravelQueueAliyunMns\Connectors;
 
 use AliyunMNS\Client;
 use Calchen\LaravelQueueAliyunMns\MnsQueue;
+use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Queue\Connectors\ConnectorInterface;
 use Illuminate\Support\Arr;
 
@@ -14,7 +15,7 @@ class MnsConnector implements ConnectorInterface
      *
      * @param array $config
      *
-     * @return \Illuminate\Contracts\Queue\Queue
+     * @return Queue
      */
     public function connect(array $config)
     {

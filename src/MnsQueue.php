@@ -6,6 +6,9 @@ use AliyunMNS\Client;
 use AliyunMNS\Model\QueueAttributes;
 use AliyunMNS\Requests\SendMessageRequest;
 use Calchen\LaravelQueueAliyunMns\Jobs\MnsJob;
+use DateInterval;
+use DateTimeInterface;
+use Illuminate\Contracts\Queue\Job;
 use Illuminate\Contracts\Queue\Queue as QueueContract;
 use Illuminate\Foundation\Application;
 use Illuminate\Queue\Queue;
@@ -25,6 +28,7 @@ class MnsQueue extends Queue implements QueueContract
 
     /**
      * 在 receiveMessage 时等待时长
+     *
      * @link https://help.aliyun.com/document_detail/35136.html?spm=a2c4g.11186623.6.675.37e35c40Hzv2FW#h2-request
      *
      * @var int?
@@ -93,10 +97,10 @@ class MnsQueue extends Queue implements QueueContract
     /**
      * Push a new job onto the queue after a delay.
      *
-     * @param \DateTimeInterface|\DateInterval|int $delay
-     * @param string|object                        $job
-     * @param mixed                                $data
-     * @param string|null                          $queue
+     * @param DateTimeInterface|DateInterval|int $delay
+     * @param string|object                       $job
+     * @param mixed                               $data
+     * @param string|null                         $queue
      *
      * @return mixed
      */
@@ -112,7 +116,7 @@ class MnsQueue extends Queue implements QueueContract
      *
      * @param string $queue
      *
-     * @return \Illuminate\Contracts\Queue\Job|null
+     * @return Job|null
      */
     public function pop($queue = null)
     {
@@ -145,6 +149,8 @@ class MnsQueue extends Queue implements QueueContract
      */
     private function getPayload($job, $data = '', $queue = null): string
     {
-        return $this->createPayload($job, $this->getQueue($queue), $data);
+        $version = Application::VERSION;
+        return Str::start($version,'5.5') || Str::start($version,'5.6') ?
+            $this->createPayload($job, $data) : $this->createPayload($job, $this->getQueue($queue), $data);
     }
 }
