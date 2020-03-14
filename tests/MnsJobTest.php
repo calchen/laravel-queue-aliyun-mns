@@ -17,7 +17,7 @@ class MnsJobTest extends TestCase
         $job = Queue::pop();
         $job->release();
         $this->assertTrue($job->isReleased());
-        sleep(2);
+        sleep(5);
         $job = Queue::pop();
         $job->delete();
     }
