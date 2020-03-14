@@ -49,5 +49,9 @@ class MnsQueueTest extends TestCase
         $job = Queue::pop();
         $this->assertTrue($job instanceof MnsJob);
         $job->delete();
+
+        /** @var MnsJob $job */
+        $job = Queue::pop();
+        $this->assertNull($job);
     }
 }
