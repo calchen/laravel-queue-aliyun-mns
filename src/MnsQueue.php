@@ -3,6 +3,7 @@
 namespace Calchen\LaravelQueueAliyunMns;
 
 use AliyunMNS\Client;
+use AliyunMNS\Exception\MessageNotExistException;
 use AliyunMNS\Model\QueueAttributes;
 use AliyunMNS\Requests\SendMessageRequest;
 use Calchen\LaravelQueueAliyunMns\Jobs\MnsJob;
@@ -121,7 +122,11 @@ class MnsQueue extends Queue implements QueueContract
     public function pop($queue = null)
     {
         $queue = $this->getQueue($queue);
-        $message = $queue->receiveMessage($this->waitSeconds);
+        try {
+            $message = $queue->receiveMessage($this->waitSeconds);
+        } catch (MessageNotExistException $e) {
+            return null;
+        }
 
         return new MnsJob($this->container, $queue, $message, $this->connectionName);
     }
