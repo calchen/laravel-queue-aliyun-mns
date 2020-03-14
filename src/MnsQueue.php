@@ -125,7 +125,7 @@ class MnsQueue extends Queue implements QueueContract
         try {
             $message = $queue->receiveMessage($this->waitSeconds);
         } catch (MessageNotExistException $e) {
-            return null;
+            return;
         }
 
         return new MnsJob($this->container, $queue, $message, $this->connectionName);
